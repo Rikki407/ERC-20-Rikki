@@ -1,0 +1,11 @@
+.brown{
+    background-color: #241F20;
+}
+.navbar{
+    padding: 0;
+    font-size: 1.1em;
+}
+.btn-danger{
+    background-color: #251F20;
+    border-color: #251F20;
+}

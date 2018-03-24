@@ -6,12 +6,12 @@ app.get("/",function (req, res) {
     res.sendFile(__dirname+"/views/home.html");
 });
 
-app.get("/rkproducts",function (req, res) {
+app.get("/products",function (req, res) {
    res.sendFile(__dirname+"/views/index.html");
 });
 
-app.get("/coins/add",function (req, res) {
-   res.sendFile(__dirname+"/views/coins.html")
+app.get("/tokens/add",function (req, res) {
+   res.sendFile(__dirname+"/views/tokens.html")
 });
 
 
