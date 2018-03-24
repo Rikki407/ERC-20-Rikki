@@ -1,4 +1,23 @@
 body{
-    background: url("https://images.unsplash.com/photo-1513114231903-a9e19d0542b3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=96298d0c62beef919899f45843140956&auto=format&fit=crop&w=1051&q=80") no-repeat;
-    background-size: 100%;
+    background: url("https://images.unsplash.com/photo-1513114231903-a9e19d0542b3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=96298d0c62beef919899f45843140956&auto=format&fit=crop&w=1051&q=80");
 }
+
+.item-card{
+    margin: 8px 0;
+    background-color: #676063;
+    padding: 0;
+}
+.btn-warning{
+    background-color: #B88B37;
+    border: #B88B37;
+}
+.card-body{
+    padding: 12px;
+}
+.cost{
+    float: left;
+    font-size: 1.4em;
+    position: absolute;
+    top: 27%;
+}
+

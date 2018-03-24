@@ -1,6 +1,5 @@
-body{
+body {
     background: url("https://images.unsplash.com/photo-1481238613160-f39d2bd78dea?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5a0e846bc05a30438b5e08bab2fc5b43&auto=format&fit=crop&w=1050&q=80") no-repeat;
-    background-size: 100%;
 }
 #shop-button{
     display: block;
@@ -11,4 +10,8 @@ body{
     color: white;
     text-shadow: 2px 2px 4px #000000;
     box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+.btn-danger{
+    background-color: #251F20;
+    border-color: #251F20;
 }
