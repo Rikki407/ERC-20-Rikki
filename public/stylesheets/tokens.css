@@ -1,3 +1,23 @@
 body{
     background: url("https://images.unsplash.com/photo-1518515279220-04e9fe2f2af8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94b558b31f22fc173f21984c111b94f4&auto=format&fit=crop&w=1099&q=80") no-repeat;
 }
+.btn-warning{
+    background-color: #6e512e;
+    border: #6e512e;
+}
+.btn-warning:hover{
+    background-color: #b28536;
+    border: #b28536;
+}
+.form-control:focus{
+    border-color: #6e512e ;
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(143, 75, 18, 0.6);
+    outline: 0 none;
+}
+.input-group-text{
+    background-color: #B88B37;
+    color: #d3d3d3;
+}
+h1{
+    color: #432c1d;
+}

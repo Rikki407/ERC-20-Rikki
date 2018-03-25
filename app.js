@@ -10,7 +10,7 @@ app.get("/products",function (req, res) {
    res.sendFile(__dirname+"/views/index.html");
 });
 
-app.get("/tokens/add",function (req, res) {
+app.get("/tokens",function (req, res) {
    res.sendFile(__dirname+"/views/tokens.html")
 });
 

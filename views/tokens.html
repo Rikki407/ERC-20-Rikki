@@ -8,25 +8,75 @@
     <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 <body>
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark brown">
-    <a class="navbar-brand" href="/">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark brown">
+        <a class="navbar-brand" href="/">
+            <img src="/RKLogo.png" width="50" height="50"  alt="">
+            <span style="vertical-align: middle;color: #B49353">RK Store</span>
+        </a>
 
-        <img src="/RKLogo.png" width="50" height="50"  alt="">
-
-        <span style="vertical-align: middle;color: #B49353">RK Store</span>
-    </a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/">Home</a>
-            <a class="nav-item nav-link" href="/products">Products</a>
-            <a class="nav-item nav-link active" href="/tokens/add">Get Tokens</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/">Home</a>
+                <a class="nav-item nav-link" href="/products">Products</a>
+                <a class="nav-item nav-link active" href="/tokens">Tokens</a>
+            </div>
         </div>
+    </nav>
+    <div style="margin-top: 150px" class="container">
+        <h1>
+            Buy ₹kt (Rikki Tokens)
+        </h1>
+        <form style="margin-top: 30px">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4"><strong>Enter your Public Key</strong></label>
+                    <input  class="form-control" id="inputEmail4" placeholder="Public Key">
+                </div>
+                <div class="form-group  col-md-4">
+                    <label for="inputPassword4"><strong>Enter amount of ₹kt</strong></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">₹kt</div>
+                        </div>
+                        <input type="number" class="form-control" id="inputPassword4" placeholder="1000.55">
+                    </div>
+                </div>
+                <div class=" form-group col-md-2">
+                    <label style="visibility: hidden" >Submit</label>
+                    <button style="display: block" class="btn btn-block btn-warning text-white">Buy</button>
+                </div>
+            </div>
+        </form>
     </div>
-</nav>
+    <div style="margin-top: 100px" class="container">
+        <h1>
+            Transfer ₹kt
+        </h1>
+        <form style="margin-top: 30px">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4"><strong>Enter Reciever's Public Key</strong></label>
+                    <input  class="form-control" id="inputEmail4" placeholder="Public Key">
+                </div>
+                <div class="form-group  col-md-4">
+                    <label for="inputPassword4"><strong>Enter amount of ₹kt</strong></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">₹kt</div>
+                        </div>
+                        <input type="number" class="form-control" id="inputPassword4" placeholder="1000.55">
+                    </div>
+                </div>
+                <div class=" form-group col-md-2">
+                    <label style="visibility: hidden" >Submit</label>
+                    <button style="display: block" class="btn btn-block btn-warning text-white">Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
