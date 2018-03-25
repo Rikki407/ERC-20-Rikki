@@ -1,13 +1,13 @@
-/*body{*/
-    /*background: url("https://images.unsplash.com/photo-1518515279220-04e9fe2f2af8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94b558b31f22fc173f21984c111b94f4&auto=format&fit=crop&w=1099&q=80") no-repeat;*/
-/*}*/
+body{
+    background: url("https://images.unsplash.com/photo-1518515279220-04e9fe2f2af8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94b558b31f22fc173f21984c111b94f4&auto=format&fit=crop&w=1099&q=80") no-repeat;
+    z-index: -300;
+}
 #token_background{
     position: absolute;
     width: 100%;
     height: 100%;
     background: url("https://images.unsplash.com/photo-1518515279220-04e9fe2f2af8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94b558b31f22fc173f21984c111b94f4&auto=format&fit=crop&w=1099&q=80") no-repeat;
     background-size: cover;
-    background-repeat: no-repeat;
     background-attachment: fixed;
     z-index: -200;
     -webkit-filter: blur(3px);
