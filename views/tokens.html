@@ -50,7 +50,7 @@
                     </div>
                     <div class=" form-group col-md-2">
                         <label style="visibility: hidden" >Submit</label>
-                        <button style="display: block" class="btn btn-block btn-warning text-white">Buy</button>
+                        <button type="button" id="buy_button" style="display: block" class="btn btn-block btn-warning text-white">Buy</button>
                     </div>
                 </div>
             </form>
@@ -62,8 +62,8 @@
             <form style="margin-top: 30px">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="rec_public-key"><strong>Enter Reciever's Public Key</strong></label>
-                        <input  class="form-control" id="rec_public-key" placeholder="Reciever's Public Key">
+                        <label for="rec_public_key"><strong>Enter Reciever's Public Key</strong></label>
+                        <input  class="form-control" id="rec_public_key" placeholder="Reciever's Public Key">
                     </div>
                     <div class="form-group  col-md-4">
                         <label for="send_amount"><strong>Enter amount of ₹kt</strong></label>
@@ -76,7 +76,7 @@
                     </div>
                     <div class=" form-group col-md-2">
                         <label style="visibility: hidden" >Submit</label>
-                        <button style="display: block" class="btn btn-block btn-warning text-white">Send</button>
+                        <button id="send_button" style="display: block" class="btn btn-block btn-warning text-white">Send</button>
                     </div>
                 </div>
             </form>
@@ -85,5 +85,288 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+
+    if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+    } else {
+        // set the provider you want from Web3.providers
+        web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    }
+    web3.eth.defaultAccount = web3.eth.accounts[0];
+
+    var CoursetroContract = web3.eth.contract([
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "name": "_owner",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "name": "_spender",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "name": "_value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Approval",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "name": "_from",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "name": "_to",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "name": "_value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Transfer",
+            "type": "event"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "_spender",
+                    "type": "address"
+                },
+                {
+                    "name": "_value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "approve",
+            "outputs": [
+                {
+                    "name": "success",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "_to",
+                    "type": "address"
+                },
+                {
+                    "name": "_value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "transfer",
+            "outputs": [
+                {
+                    "name": "success",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "_owner",
+                    "type": "address"
+                },
+                {
+                    "name": "_to",
+                    "type": "address"
+                },
+                {
+                    "name": "_value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "transferFrom",
+            "outputs": [
+                {
+                    "name": "success",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_owner",
+                    "type": "address"
+                },
+                {
+                    "name": "_spender",
+                    "type": "address"
+                }
+            ],
+            "name": "allowance",
+            "outputs": [
+                {
+                    "name": "remaining",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_owner",
+                    "type": "address"
+                }
+            ],
+            "name": "balanceOf",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "decimals",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint8"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "name",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "symbol",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "totalSupply",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "version",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ]);
+
+    var Coursetro = CoursetroContract.at('0x8cdaf0cd259887258bc13a92c0a6da92698644c0');
+    console.log(Coursetro);
+
+    Coursetro.symbol(function (err, res) {
+        console.log(res)
+    });
+
+    console.log("Balance of 1st account : ");
+    Coursetro.balanceOf("0x627306090abaB3A6e1400e9345bC60c78a8BEf57",function (err, res) {
+        if(!err){
+            console.log(res.toNumber());
+        }else {
+            console.log(err);
+        }
+    });
+    $("#buy_button").click(function () {
+        var public_key = $("#public_key").val();
+        var buy_amount = $("#buy_amount").val();
+        Coursetro.transfer(public_key,buy_amount,function (err, res) {
+            if(!err){
+                console.log(res);
+                alert("Transaction of amount "+buy_amount+" to account \n"+public_key+"\n successful !!!");
+            }else {
+                console.log(err);
+            }
+        })
+    });
+
+    $("#send_button").click(function () {
+        var public_key = $("#rec_public_key").val();
+        var send_amount = $("#send_amount").val();
+        Coursetro.transfer()
+    })
+
+</script>
 </body>
 </html>

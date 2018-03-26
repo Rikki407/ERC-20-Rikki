@@ -11,7 +11,7 @@ contract RIKKI_TOKEN is ERC_20 {
     function RIKKI_TOKEN() public{
         ceo = msg.sender;
         name = "RIKKI_TOKEN";
-        decimals = 3;
+        decimals = 0;
         totalSupply = 1000000;
         balance[msg.sender] = 1000000;
         symbol = "₹kt";
