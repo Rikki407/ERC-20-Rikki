@@ -35,19 +35,29 @@
             </h1>
             <form style="margin-top: 30px">
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="public_key"><strong>Enter your Public Key</strong></label>
-                        <input  class="form-control" id="public_key" placeholder="Your Public Key">
-                    </div>
                     <div class="form-group  col-md-4">
                         <label for="buy_amount"><strong>Enter amount of ₹kt</strong></label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">₹kt</div>
                             </div>
-                            <input type="number" class="form-control" id="buy_amount" placeholder="1000.55">
+                            <input  class="form-control" id="buy_amount" placeholder="0"  onkeypress="changeEthValue();return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57;" >
                         </div>
                     </div>
+                    <div class="col-md-1"></div>
+                    <div class="form-group  col-md-4">
+                        <label for="eth_amount"><strong>ETH to be paid</strong></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">ETH</div>
+                            </div>
+
+                            <input type="text" readonly class="form-control form-control-plaintext" id="eth_amount" value="0" >
+                        </div>
+                    </div>
+
+                    <div class="col-md-1"></div>
+
                     <div class=" form-group col-md-2">
                         <label style="visibility: hidden" >Submit</label>
                         <button type="button" id="buy_button" style="display: block" class="btn btn-block btn-warning text-white">Buy</button>
@@ -71,7 +81,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">₹kt</div>
                             </div>
-                            <input type="number" class="form-control" id="send_amount" placeholder="1000.55">
+                            <input type="number" class="form-control" id="send_amount" placeholder="0">
                         </div>
                     </div>
                     <div class=" form-group col-md-2">
@@ -118,7 +128,7 @@
                     "type": "uint256"
                 }
             ],
-            "name": "getTokens",
+            "name": "buyTokens",
             "outputs": [],
             "payable": false,
             "stateMutability": "nonpayable",
@@ -137,6 +147,24 @@
             "constant": false,
             "inputs": [],
             "name": "killContract",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "_reciever",
+                    "type": "address"
+                },
+                {
+                    "name": "value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "transferTokens",
             "outputs": [],
             "payable": false,
             "stateMutability": "nonpayable",
@@ -233,8 +261,10 @@
         }
     ]);
 
-    var RKstore = RKstoreContract.at('0xe42c3ab010f8c25279647f05c6c728c268206928');
+    var RKstore = RKstoreContract.at('0xcfde289f03197e8c2f8fb0c7dfd98f41ce283925');
+
     console.log(RKstore);
+
     RKstore.getBalance('0xc5fdf4076b8f3a5357c5e395ab970b5b54098fef',function (err, res) {
         if(!err){
             console.log(res.toNumber());
@@ -242,21 +272,24 @@
             console.log(err);
         }
     });
-    RKstore.initStore(function (err, res) {
-        if(!err){
-            console.log(res);
-        }else {
-            console.log(err);
-        }
+    function changeEthValue() {
+
+        $('#buy_amount').on("keyup",function (event) {
+
+            $('#eth_amount').val($('#buy_amount').val()/2);
+
+        });
+    }
+    $('#buy_button').click(function () {
+        RKstore.buyTokens($('#buy_amount').val(),function (err, res) {
+            if(!err){
+                console.log(res);
+            }else {
+                console.log(err);
+            }
+        });
     });
 
-    RKstore.getStoreItem("0",function (err, res) {
-        if(!err){
-            console.log(res);
-        }else {
-            console.log(err);
-        }
-    });
 
 </script>
 </body>
