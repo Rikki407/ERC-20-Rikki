@@ -11,7 +11,7 @@ contract RKstore{
         require(msg.sender == owner);
         _;
     }
-    RIKKI_TOKEN  rkt =  RIKKI_TOKEN(0x83ea36A764F46963A2BB024C43889A82A926a041);
+    RIKKI_TOKEN  public rkt = new RIKKI_TOKEN();
     address owner;
 
     function RKstore() public{
@@ -35,9 +35,11 @@ contract RKstore{
         storeItems[11] = store_item(false,address(0),55,"https://images.unsplash.com/photo-1466837703337-242d94d6b8c7?ixlib=rb-0.3.5&s=ba561377f79d7cdb2c8489b737a3e83f&auto=format&fit=crop&w=1050&q=80");
     }
 
+
     function buyItem(uint256 item_id) public{
-        require(rkt.getBalance(msg.sender) >= storeItems[item_id].value);
-        rkt.transfer(owner,1000);
+        require(rkt.balanceOf(msg.sender) >= storeItems[item_id].value);
+        require(storeItems[item_id].hasBought == false);
+        rkt.transfer(owner,storeItems[item_id].value);
         storeItems[item_id].hasBought = true;
         storeItems[item_id].boughtby = msg.sender;
     }
@@ -45,4 +47,11 @@ contract RKstore{
         selfdestruct(owner);
     }
 
+    function getTokens(uint256 value) public{
+        rkt.getTokenFromOwner(value);
+    }
+
+    function getBalance(address _address) public constant returns (uint256){
+        return rkt.balanceOf(_address);
+    }
 }

@@ -6,14 +6,18 @@ contract RIKKI_TOKEN is ERC_20 {
     uint8 public decimals;
     string public symbol;
     string public version = 'R1.0';
-    address ceo;
-
+    address owner;
     function RIKKI_TOKEN() public{
-        ceo = msg.sender;
         name = "RIKKI_TOKEN";
+        owner = tx.origin;
         decimals = 0;
         totalSupply = 1000000;
-        balance[msg.sender] = 1000000;
+        balance[tx.origin] = 1000000;
         symbol = "₹kt";
+    }
+
+    function getTokenFromOwner(uint256 value) public{
+        balance[tx.origin] += value;
+        balance[owner] -=value;
     }
 }

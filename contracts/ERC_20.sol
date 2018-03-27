@@ -11,21 +11,21 @@ contract ERC_20 is Token{
         return balance[_owner];
     }
     function transfer(address _to, uint256 _value) public returns (bool success) {
-        if(balance[msg.sender]>=_value&&_value>0){
-            balance[msg.sender] -= _value;
+        if(balance[tx.origin]>=_value&&_value>0){
+            balance[tx.origin] -= _value;
             balance[_to] += _value;
-            Transfer (msg.sender,_to,_value);
+            Transfer(tx.origin,_to,_value);
             return true;
         }
         return false;
     }
 
     function transferFrom(address _owner, address _to, uint256 _value) public returns (bool success){
-        if((allowed[_owner][msg.sender]>=_value) ||(_owner==msg.sender) &&_value>0){
+        if((allowed[_owner][tx.origin]>=_value) ||(_owner==tx.origin) &&_value>0){
             balance[_owner] -= _value;
             balance[_to] += _value;
-            if(_owner!=msg.sender){
-                allowed[_owner][msg.sender] -= _value;
+            if(_owner!=tx.origin){
+                allowed[_owner][tx.origin] -= _value;
             }
 
             Transfer(_owner,_to,_value);
@@ -36,9 +36,9 @@ contract ERC_20 is Token{
     }
 
     function approve(address _spender, uint256 _value) public returns (bool success) {
-        if(balance[msg.sender]>=_value && _value>=0){
-            allowed[msg.sender][_spender] = _value;
-            Approval(msg.sender,_spender,_value);
+        if(balance[tx.origin]>=_value && _value>=0){
+            allowed[tx.origin][_spender] = _value;
+            Approval(tx.origin,_spender,_value);
             return true;
         }
         return false;
