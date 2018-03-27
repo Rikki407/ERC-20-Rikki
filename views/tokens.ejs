@@ -95,7 +95,44 @@
     }
     web3.eth.defaultAccount = web3.eth.accounts[0];
 
-    var CoursetroContract = web3.eth.contract([
+    var RKstoreContract = web3.eth.contract([
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "item_id",
+                    "type": "uint256"
+                }
+            ],
+            "name": "buyItem",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "getTokens",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [],
+            "name": "initStore",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
         {
             "constant": false,
             "inputs": [],
@@ -103,6 +140,64 @@
             "outputs": [],
             "payable": false,
             "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_address",
+                    "type": "address"
+                }
+            ],
+            "name": "getBalance",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_id",
+                    "type": "uint256"
+                }
+            ],
+            "name": "getStoreItem",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "rkt",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
             "type": "function"
         },
         {
@@ -135,118 +230,33 @@
             "payable": false,
             "stateMutability": "view",
             "type": "function"
-        },
-        {
-            "constant": false,
-            "inputs": [],
-            "name": "initStore",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "constant": false,
-            "inputs": [
-                {
-                    "name": "value",
-                    "type": "uint256"
-                }
-            ],
-            "name": "getTokens",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "constant": true,
-            "inputs": [],
-            "name": "rkt",
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "address"
-                }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "constant": false,
-            "inputs": [
-                {
-                    "name": "item_id",
-                    "type": "uint256"
-                }
-            ],
-            "name": "buyItem",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "constant": true,
-            "inputs": [
-                {
-                    "name": "_address",
-                    "type": "address"
-                }
-            ],
-            "name": "getBalance",
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "constructor"
         }
     ]);
 
-    var Coursetro = CoursetroContract.at('0x8cdaf0cd259887258bc13a92c0a6da92698644c0');
-    console.log(Coursetro);
-
-    Coursetro.symbol(function (err, res) {
-        console.log(res)
-    });
-
-    console.log("Balance of 1st account : ");
-    Coursetro.balanceOf("0x627306090abaB3A6e1400e9345bC60c78a8BEf57",function (err, res) {
+    var RKstore = RKstoreContract.at('0xe42c3ab010f8c25279647f05c6c728c268206928');
+    console.log(RKstore);
+    RKstore.getBalance('0xc5fdf4076b8f3a5357c5e395ab970b5b54098fef',function (err, res) {
         if(!err){
             console.log(res.toNumber());
         }else {
             console.log(err);
         }
     });
-    $("#buy_button").click(function () {
-        var public_key = $("#public_key").val();
-        var buy_amount = $("#buy_amount").val();
-        Coursetro.transfer(public_key,buy_amount,function (err, res) {
-            if(!err){
-                console.log(res);
-                alert("Transaction of amount "+buy_amount+" to account \n"+public_key+"\n successful !!!");
-            }else {
-                console.log(err);
-            }
-        })
+    RKstore.initStore(function (err, res) {
+        if(!err){
+            console.log(res);
+        }else {
+            console.log(err);
+        }
     });
 
-    $("#send_button").click(function () {
-        var public_key = $("#rec_public_key").val();
-        var send_amount = $("#send_amount").val();
-        Coursetro.transfer()
-    })
+    RKstore.getStoreItem("0",function (err, res) {
+        if(!err){
+            console.log(res);
+        }else {
+            console.log(err);
+        }
+    });
 
 </script>
 </body>
