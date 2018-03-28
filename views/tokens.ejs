@@ -225,11 +225,23 @@
                     "type": "uint256"
                 }
             ],
-            "name": "getStoreItem",
+            "name": "getItem",
             "outputs": [
                 {
                     "name": "",
                     "type": "bool"
+                },
+                {
+                    "name": "",
+                    "type": "address"
+                },
+                {
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "name": "",
+                    "type": "string"
                 }
             ],
             "payable": false,
@@ -283,17 +295,10 @@
         }
     ]);
 
-    var RKstore = RKstoreContract.at('0x8cdaf0cd259887258bc13a92c0a6da92698644c0');
+    var RKstore = RKstoreContract.at('0x82d50ad3c1091866e258fd0f1a7cc9674609d254');
 
     console.log(RKstore);
 
-    RKstore.getBalance('0x627306090abaB3A6e1400e9345bC60c78a8BEf57',function (err, res) {
-        if(!err){
-            console.log(res.toNumber());
-        }else {
-            console.log(err);
-        }
-    });
     function changeEthValue() {
 
         $('#buy_amount').on("keyup",function (event) {
