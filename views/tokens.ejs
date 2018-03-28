@@ -86,7 +86,7 @@
                     </div>
                     <div class=" form-group col-md-2">
                         <label style="visibility: hidden" >Submit</label>
-                        <button id="send_button" style="display: block" class="btn btn-block btn-warning text-white">Send</button>
+                        <button type="button" id="send_button" style="display: block" class="btn btn-block btn-warning text-white">Send</button>
                     </div>
                 </div>
             </form>
@@ -122,16 +122,11 @@
         },
         {
             "constant": false,
-            "inputs": [
-                {
-                    "name": "value",
-                    "type": "uint256"
-                }
-            ],
+            "inputs": [],
             "name": "buyTokens",
             "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
+            "payable": true,
+            "stateMutability": "payable",
             "type": "function"
         },
         {
@@ -261,11 +256,11 @@
         }
     ]);
 
-    var RKstore = RKstoreContract.at('0xcfde289f03197e8c2f8fb0c7dfd98f41ce283925');
+    var RKstore = RKstoreContract.at('0x8cdaf0cd259887258bc13a92c0a6da92698644c0');
 
     console.log(RKstore);
 
-    RKstore.getBalance('0xc5fdf4076b8f3a5357c5e395ab970b5b54098fef',function (err, res) {
+    RKstore.getBalance('0x627306090abaB3A6e1400e9345bC60c78a8BEf57',function (err, res) {
         if(!err){
             console.log(res.toNumber());
         }else {
@@ -281,7 +276,7 @@
         });
     }
     $('#buy_button').click(function () {
-        RKstore.buyTokens($('#buy_amount').val(),function (err, res) {
+        RKstore.buyTokens({value : $('#eth_amount').val()*1000000000000000000},function (err, res) {
             if(!err){
                 console.log(res);
             }else {
@@ -289,6 +284,17 @@
             }
         });
     });
+
+    $('#send_button').click(function () {
+        RKstore.transferTokens($('#rec_public_key').val(),$('#send_amount').val(),function (err, res) {
+            if(!err){
+                console.log(res);
+            }else {
+                console.log(err);
+            }
+        });
+    });
+
 
 
 </script>
