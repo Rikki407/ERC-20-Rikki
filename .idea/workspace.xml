@@ -90,9 +90,13 @@
       <file leaf-file-name="tokens.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/tokens.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4189">
-              <caret line="88" column="44" lean-forward="false" selection-start-line="88" selection-start-column="44" selection-end-line="88" selection-end-column="44" />
-              <folding />
+            <state relative-caret-position="86">
+              <caret line="320" column="13" lean-forward="true" selection-start-line="320" selection-start-column="13" selection-end-line="320" selection-end-column="13" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -284,12 +288,12 @@
       <workItem from="1521960115436" duration="3619000" />
       <workItem from="1522035248066" duration="1005000" />
       <workItem from="1522054357344" duration="11340000" />
-      <workItem from="1522205444452" duration="826000" />
+      <workItem from="1522205444452" duration="1429000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41977000" />
+    <option name="totallyTimeSpent" value="42580000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -337,7 +341,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1826">
           <caret line="83" column="101" lean-forward="false" selection-start-line="83" selection-start-column="101" selection-end-line="83" selection-end-column="101" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -431,7 +439,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7370">
           <caret line="335" column="84" lean-forward="false" selection-start-line="335" selection-start-column="42" selection-end-line="335" selection-end-column="84" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -509,7 +521,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7634">
           <caret line="347" column="0" lean-forward="false" selection-start-line="347" selection-start-column="0" selection-end-line="347" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -568,7 +584,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1496">
           <caret line="68" column="47" lean-forward="false" selection-start-line="68" selection-start-column="47" selection-end-line="68" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -701,9 +721,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/tokens.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4189">
-          <caret line="88" column="44" lean-forward="false" selection-start-line="88" selection-start-column="44" selection-end-line="88" selection-end-column="44" />
-          <folding />
+        <state relative-caret-position="86">
+          <caret line="320" column="13" lean-forward="true" selection-start-line="320" selection-start-column="13" selection-end-line="320" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
